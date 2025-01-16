@@ -140,6 +140,7 @@ table {
 
 :root {
     --primary-color: rgb(23, 173, 0);
+    --primary-highlight-color: rgba(23, 173, 0, 0.852);
     --link-text-color: white;
 
     --sidebar-text-size: 20px;
@@ -147,6 +148,8 @@ table {
     --welcome-section-text-size: 24px;
     --buttons-text-side: 16px;
     --small-text: 14px;
+
+    --project-card-line-height: 1.2rem;
 }
 
 .sidebar {
@@ -207,6 +210,10 @@ nav {
     filter: invert(100%) sepia(100%) saturate(21%) hue-rotate(174deg) brightness(111%) contrast(101%);
 }
 
+.navigation-links a:hover {
+    color: #c3c3c3;
+}
+
 aside {
     margin-top: 3rem;
 }
@@ -229,6 +236,10 @@ aside {
 
 .service-links a {
     text-decoration: none;
+}
+
+.service-links a:hover {
+    color: #c3c3c3;
 }
 
 .service-links img {
@@ -264,7 +275,7 @@ header {
 }
 
 .searchbar input:focus {
-    background-color: #d1c64b;
+    background-color: #fff58b;
     outline: none;
 }
 
@@ -280,6 +291,7 @@ header {
 
 .profile-section img:first-child {
     width: 1.8rem;
+    cursor: pointer;
 }
 
 .profile-section img+img {
@@ -333,27 +345,140 @@ header {
     background-color: var(--primary-color);
 }
 
+.post-buttons button:hover {
+    background-color: var(--primary-highlight-color);
+    color: #c3c3c3;
+}
+
 main {
-    margin-left: 20rem;
+    margin: 2rem 2rem 0 22rem;
     display: grid;
-    grid-template-columns: 2fr 2fr 1fr;
-    grid-template-rows: 2fr 1fr 1fr 2fr;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr 1fr;
     height: 100vh;
+    gap: 3rem;
 }
 
 .my-projects {
-    grid-row: 1 / 5;
-    grid-column: 1 / 3;
-}
-
-.my-projects h2 {
-    font-weight: bold;
-}
-
-.announcements {
     grid-row: 1 / 3;
 }
 
+h2 {
+    font-weight: bold;
+    font-size: var(--sidebar-text-size);
+    margin: 0 0 1rem 0;
+}
+
+.project-cards {
+    margin-right: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    height: 100%;
+    gap: 3rem;
+}
+
+.project-card {
+    position: relative;
+    padding: 2rem 1rem 0 1rem;
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+    border-left: 0.5rem #fff15a solid;
+    background-color: white;
+    cursor: pointer;
+}
+
+h3 {
+    margin: 0.5rem 0 0.5rem 0;
+    font-weight: bold;
+    font-size: var(--header-text-size);
+}
+
+.action-bar {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: end;
+    position: absolute;
+    bottom: 2rem;
+    right: 1rem;
+}
+
+.description {
+    color: #999;
+    line-height: var(--project-card-line-height);
+}
+
+.action-bar img {
+    width: 2rem;
+    height: auto;
+    filter: brightness(0) saturate(100%) invert(40%) sepia(2%) saturate(18%) hue-rotate(331deg) brightness(90%) contrast(86%);
+}
+
+.announcement-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 2rem;
+    background-color: white;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.announcement {
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.announcement+.announcement {
+    border-top: solid 1px #999;
+}
+
+.announcement p {
+    font-size: var(--small-text);
+    line-height: 1rem;
+    color: #999;
+}
+
+h4 {
+    padding: 1rem 0 0.2rem 0;
+    font-size: var(--small-text);
+    font-weight: bold;
+}
+
 .trending {
-    grid-row: 3 / 5;
+    height: 100%;
+}
+
+.trending-projects {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 2rem;
+    height: 100%;
+    padding: 1rem;
+}
+
+.trending-project {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+.trending-project img {
+    width: 3rem;
+}
+
+.trending-project div p {
+    padding: 0.2rem 0;
+}
+
+.tag {
+    font-weight: bold;
 }
